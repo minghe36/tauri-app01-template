@@ -1,115 +1,109 @@
-# app01-template
+# tauri-app01-template
 
-This repository is a starter template for building desktop applications with **Tauri + React + Rust**.
+<div align="center">
+  <img src="./crates/icons/logo.png" alt="tauri-app01-template Logo" width="100">
+  <h1>tauri-app01-template</h1>
+  <p>[Chinese README](https://github.com/minghe36/tauri-app01-template/blob/master/README-zh.md)</p>
+</div>
 
-It is aimed at developers who want a practical starting point instead of an empty demo. If you are new to Tauri, Rust, or desktop app development, this template is meant to help you understand:
+A modern desktop application template built with **Tauri v2, React 19, and Rust**. The goal is not to provide a starter that only shows a launch screen, but to provide an engineering foundation you can move straight into real product development with.
 
-- what is already set up for you
-- where to put code
-- how to run the project
-- which tools are used and why
+The reasons to recommend this template are concrete:
 
-You can treat it as a "ready-to-build-from" foundation for a real app, not just a toy example.
+- **It is not an empty shell**: desktop app, CLI, mobile shell, i18n, themes, command system, tests, and quality checks are already wired up, so you do not need to assemble everything from scratch.
+- **It is suitable for long-term maintenance**: directory boundaries, state management layers, frontend-backend bridge patterns, and shared package structure are already defined, so the codebase is less likely to collapse as features grow.
+- **It lowers the Tauri learning curve**: if you already know frontend development but are new to Rust or Tauri, common integration patterns are already prepared and easy to follow.
+- **It reduces engineering overhead**: type checking, linting, Rust checks, i18n, theme tokens, and shared UI infrastructure are already in place, so you do not need to keep rebuilding scaffolding while developing features.
+- **It works well with AI-assisted development**: the repository structure, docs, and rules are explicit enough that generated code is more likely to follow the same conventions instead of drifting into chaos.
 
-There is also a companion UI project here:
+If you only want a minimal Hello World, this template will feel heavy. But if you want to build a desktop app that will keep evolving, involve collaboration, or expand across platforms, it is a better fit than a blank starter.
+
+Companion UI project (in progress):
 
 - https://github.com/minghe36/tauri-app01-ui
 
-## What Is This?
-
-This repository is a **Tauri v2 monorepo template**.
-
-In simple terms:
-
-- **Tauri** packages your frontend as a desktop app
-- **React** builds the user interface
-- **Rust** handles native desktop features, system access, and performance-sensitive logic
-- **npm workspaces** keep multiple apps and shared packages in one repository
-
-This is not a single `src/` frontend app. It is a multi-app workspace.
-
 ## Tech Stack
 
-If you are new to the project, this is the most important section to understand first.
+If you are new to this repository, this is the best section to understand first.
 
 ### Frontend
 
 - **React 19**
-  Used to build the desktop UI.
+  Used to build the desktop app UI.
 - **TypeScript**
-  Adds static types to frontend code.
+  Adds type safety to frontend code.
 - **Vite**
-  Runs the frontend dev server and build pipeline.
+  Handles the frontend dev server and build pipeline.
 
 ### Desktop Runtime
 
 - **Tauri v2**
-  Wraps the frontend into a desktop application and exposes native APIs.
+  Packages the frontend as a desktop app and provides native capability bridges.
 - **Rust**
-  Powers Tauri commands, file access, system integration, and app-side logic.
+  Powers Tauri commands, file access, system integration, and part of the application logic.
 
 ### UI Layer
 
 - **shadcn/ui**
-  Base component system for dialogs, forms, buttons, and common UI primitives.
+  Base component system for common UI primitives such as buttons, dialogs, and forms.
 - **Tailwind CSS v4**
-  Utility-first styling plus shared theme tokens.
+  Used for styling and shared theme tokens.
 - **Lucide React**
-  Icon library used across the app.
+  Icon library.
 
 ### State Management
 
 - **useState**
-  For local component state.
+  For temporary component-local state.
 - **Zustand**
-  For shared frontend UI/app state.
+  For shared frontend UI / app state.
 - **TanStack Query**
-  For async or persistent data flows.
+  For async and persistent data flows.
 
 ### Internationalization
 
 - **react-i18next**
-  Frontend translations in `packages/i18n/locales`.
+  Frontend i18n, with locale files in `packages/i18n/locales`.
 - **rust-i18n**
-  Rust-side translations in `crates/locales`.
+  Rust-side i18n, with locale files in `crates/locales`.
 
-The template is set up for Chinese and English by default.
+The template supports Chinese and English by default.
 
 ### Testing
 
 - **Vitest**
   Frontend test runner.
 - **Testing Library**
-  UI testing utilities for React.
+  React component testing utilities.
 - **cargo test**
-  Rust-side test runner.
+  Rust-side tests.
 
 ### Quality Tools
 
 - **ESLint**
-  JavaScript/TypeScript linting.
+  JavaScript / TypeScript linting.
 - **Prettier**
   Code formatting.
 - **ast-grep**
-  Structural rules for architecture enforcement.
+  Structural rule checks used to enforce architecture constraints.
 - **clippy**
   Rust linting.
 - **knip**
   Detects unused code and dependencies.
 - **jscpd**
-  Detects duplication.
+  Detects duplicate code.
 
 ## What Is Already Included?
 
-Out of the box, this template already gives you:
+Out of the box, this template already includes:
 
 - a desktop app shell
-- a CLI workspace app
+- a CLI subproject
 - a mobile Tauri shell
 - React + TypeScript + Vite setup
 - Rust command bindings
-- English and Chinese i18n
-- shared UI components and shared CSS tokens
+- Chinese and English i18n
+- shared UI components and shared style tokens
 - tests, linting, formatting, and Rust checks
 - one-command quality checks with `npm run check:all`
 
@@ -117,12 +111,12 @@ You do not need to assemble these basics from scratch.
 
 ## Understand the Repository Layout
 
-The easiest way to get lost in this project is to treat it like a small single-app repo. Start with this map:
+The easiest way to get lost in this repository is to treat it like a small single-app repo. Start with this map:
 
 ```text
 apps/
-  desktop/     Main desktop app
-  cli/         CLI app
+  desktop/     Main desktop app (most common place to edit)
+  cli/         CLI tool
   mobile/      Mobile Tauri shell
 
 packages/
@@ -134,20 +128,20 @@ packages/
 
 crates/
   locales/     Rust-side translations
-  icons/       Shared app icons
+  icons/       App icon resources
 
 docs/
   developer/   Developer documentation
-  userguide/   End-user documentation template
+  userguide/   User documentation template
 ```
 
-If your goal is just to get the app running and start changing UI, focus on:
+If you only want to get the app running and start changing the UI, focus on:
 
-- `apps/desktop/src`
-- `apps/desktop/src-tauri/src`
-- `packages/i18n/locales`
-- `crates/locales`
-- `packages/css`
+- `apps/desktop/src`: React pages and components
+- `apps/desktop/src-tauri/src`: Rust code
+- `packages/i18n/locales`: frontend translations
+- `crates/locales`: Rust translations
+- `packages/css`: themes and global styles
 
 ## What Do You Need Installed?
 
@@ -166,7 +160,7 @@ npm -v
 
 ### 2. Rust
 
-Use the latest stable toolchain.
+Install the stable toolchain.
 
 Check it with:
 
@@ -177,7 +171,7 @@ cargo -V
 
 ### 3. Platform Dependencies for Tauri
 
-Tauri depends on native system tooling, so setup differs by platform.
+Tauri is not a frontend-only project. It depends on native system tooling, so different platforms need different setup.
 
 - macOS: run `xcode-select --install`
 - Windows: install Visual Studio C++ Build Tools
@@ -187,7 +181,7 @@ Official guide:
 
 - https://tauri.app/start/prerequisites/
 
-If `npm install` succeeds but `npm run tauri:dev` fails, missing system dependencies are usually the first thing to check.
+If you are a beginner, it is best to install those first before continuing.
 
 ## First Project Run
 
@@ -200,23 +194,21 @@ cd app01-template
 
 ### 2. Install dependencies
 
-This repository uses `npm`. Do not switch to `pnpm`, `yarn`, or `bun`.
+This repository requires `npm`. Do not use `pnpm`, `yarn`, or `bun`.
 
 ```bash
 npm install
 ```
 
-### 3. Start the desktop app in development mode
+### 3. Start the desktop development environment
 
 ```bash
 npm run tauri:dev
 ```
 
-If everything is configured correctly, the desktop app window should open.
+If everything is set up correctly, the desktop app window should open.
 
-## Common Commands
-
-These are the commands a beginner usually needs first.
+## Common Commands Beginners Should Learn First
 
 ### Start the desktop app
 
@@ -232,8 +224,8 @@ npm run dev
 
 Important difference:
 
-- `npm run dev` starts only Vite
-- `npm run tauri:dev` starts the real desktop app workflow
+- `npm run dev` starts only the Vite frontend
+- `npm run tauri:dev` starts the full desktop app development workflow
 
 ### Build the desktop app
 
@@ -253,50 +245,52 @@ npm run test:run
 npm run rust:test
 ```
 
-### Run the full quality gate
+### Run the full quality check
 
 ```bash
 npm run check:all
 ```
 
-That command runs checks for:
+That command checks:
 
 - TypeScript
 - ESLint
 - Prettier
 - ast-grep
-- Rust formatting
+- Rust fmt
 - clippy
 - Vitest
 - cargo test
 
-If you made non-trivial changes, run it before finishing.
+If you changed a meaningful amount of code, run it before finishing.
 
-## How Development Usually Works Here
+## How Development Usually Works In This Repository
 
-A simple way to think about work in this template:
+You can think about work in this template in the following order.
 
-### 1. Change UI in the desktop app
+### 1. Change UI
 
-Most UI work goes into:
+Most UI work usually lives in:
 
 - `apps/desktop/src/components`
 - `apps/desktop/src/App.tsx`
 - `apps/desktop/src/components/layout`
 
-### 2. Add or update frontend state
+### 2. Change frontend state
 
-The repository follows a clear rule:
+This repository has clear rules:
 
-- local temporary state: `useState`
-- shared frontend status/UI state: `Zustand`
-- async or persistent data: `TanStack Query`
+- component-local temporary state: `useState`
+- shared UI state across components: `Zustand`
+- persistent or async data: `TanStack Query`
+
+If you are new, you do not need to move everything into global state immediately.
 
 ### 3. Use Rust when native capability is needed
 
 Examples:
 
-- file access
+- file reading and writing
 - system notifications
 - desktop window control
 - local database operations
@@ -305,55 +299,59 @@ Those usually live in:
 
 - `apps/desktop/src-tauri/src/commands`
 
-### 4. Do not hardcode user-facing copy
+Avoid calling low-level system features directly from the frontend. Prefer typed Tauri command bindings.
 
-This template supports English and Chinese by default.
+### 4. Do not hardcode user-facing text
+
+This project supports Chinese and English by default.
 
 So when you add visible text:
 
 - frontend strings go into `packages/i18n/locales/en.json` and `zh.json`
 - Rust strings go into `crates/locales/en.json` and `zh.json`
 
-## Good First Changes for Beginners
+## Good First Changes For Beginners
 
-If you want to learn the repo by editing something small, start here.
+The easiest way to learn this repo is to start with a small change.
 
-### Exercise 1: Change a page label or title
+### Exercise 1: Change a title or page label
 
-Look at:
+Start here:
 
 - `apps/desktop/src/App.tsx`
-- `packages/i18n/locales/en.json`
 - `packages/i18n/locales/zh.json`
+- `packages/i18n/locales/en.json`
+
+Change one frontend string and confirm you can see the UI update.
 
 ### Exercise 2: Change theme colors
 
-Look at:
+Look here:
 
 - `packages/css/light.css`
 - `packages/css/dark.css`
 
-These files hold shared theme tokens.
+These files store the shared theme tokens.
 
 ### Exercise 3: Edit a component
 
-Look at:
+Look here:
 
 - `apps/desktop/src/components`
 - `packages/components/ui`
 
-If a component is desktop-only, prefer `apps/desktop/src/components`.
-Only move things into `packages/components/ui` when they are truly shared.
+If it is only used by the current desktop app, prefer `apps/desktop/src/components`.
+Only move it into `packages/components/ui` when it is actually shared across apps.
 
 ## Important Project Rules
 
-These are the rules beginners usually need to know early.
+The most common beginner mistake is not syntax. It is editing the wrong place. These rules matter:
 
 ### 1. Use `npm`
 
 Do not switch package managers.
 
-### 2. This is a multi-app workspace
+### 2. This is a multi-app repository, not a single-app repository
 
 Do not assume everything belongs in a root `src/` folder.
 
@@ -368,23 +366,25 @@ Modern paths are usually:
 - React translations: `packages/i18n`
 - Rust translations: `crates/locales`
 
-### 4. Do not scatter shared state randomly
+### 4. Do not scatter frontend state randomly
 
-Once state affects multiple components or application flow, it should follow the project state rules instead of living in ad hoc local hooks.
+This repository is strict about state layering. Once state affects multiple components or app flow, it should not stay spread across ad hoc hooks.
 
-### 5. Do not put business SQL in the frontend
+### 5. Do not write business SQL directly in the frontend
 
-Business data access should go through typed Rust commands.
+Frontend business data access should go through Rust commands.
 
 ### 6. Reuse shared UI first
 
-Before creating new primitives, check:
+For UI primitives, check:
 
 - `packages/components/ui`
 
+Do not create another parallel set of basic buttons, forms, and dialogs unless needed.
+
 ## What Should You Read First?
 
-Recommended reading order for new developers:
+If you are new, read in this order:
 
 1. [docs/USING_THIS_TEMPLATE.md](/Users/xiewenhao/Documents/dev/app/app01-template/docs/USING_THIS_TEMPLATE.md)
 2. [docs/developer/README.md](/Users/xiewenhao/Documents/dev/app/app01-template/docs/developer/README.md)
@@ -393,26 +393,26 @@ Recommended reading order for new developers:
 5. [docs/developer/tauri-commands.md](/Users/xiewenhao/Documents/dev/app/app01-template/docs/developer/tauri-commands.md)
 6. [docs/developer/i18n-patterns.md](/Users/xiewenhao/Documents/dev/app/app01-template/docs/developer/i18n-patterns.md)
 
-If you want the shortest path, start with:
+If you do not want to read too much at once, at least start with:
 
 - `architecture-guide.md`
-- `docs/developer/README.md`
+- `README.md`
 
 ## FAQ
 
 ### `npm install` worked, but `npm run tauri:dev` failed
 
-Usually this is not an app-code problem. It is more often a missing platform dependency.
+Most likely this is not a project code problem. Missing system dependencies are more common.
 
-Check:
+Check first:
 
 - whether Rust is installed
-- whether platform tooling is installed
-- whether `cargo -V` works
+- whether `xcode-select --install` / Windows Build Tools / Linux dependencies are installed
+- whether `cargo -V` runs successfully
 
-### I changed frontend code, but the desktop app did not update
+### I changed the frontend, but the desktop app did not update
 
-Make sure you ran:
+Make sure you are running:
 
 ```bash
 npm run tauri:dev
@@ -424,40 +424,41 @@ and not only:
 npm run dev
 ```
 
-### I do not know whether code belongs in `apps` or `packages`
+### I do not know whether a file should go in `apps` or `packages`
 
-Ask this first:
+Ask yourself first:
 
-- is it only used by the desktop app?
+- is this code only used by the desktop app?
 
 If yes, keep it in `apps/desktop`.
-Only move it into `packages` when it is actually shared.
+
+Only move it into `packages` when it is actually shared across multiple apps.
 
 ### Why are there so many checks?
 
-Because this template is intended for maintainable app development, not only for quick demos.
+Because this template is not meant for quickly stacking a demo. It is meant for projects that will keep evolving.
 
-The checks are there to catch:
+These checks are there to catch problems early:
 
 - type errors
-- formatting problems
+- styling / formatting issues
 - architecture violations
 - Rust warnings
 - test failures
 
 ## Recommended Beginner Workflow
 
-If you are starting a real app from this template, a good order is:
+If you want to build your own app from this template, a good starting order is:
 
 1. get the project running
 2. change app name, title, and icon
-3. update a few UI strings
+3. change a few UI strings
 4. tweak theme colors
-5. build one small component
+5. add one small component
 6. run `npm run check:all`
 7. then start building real product features
 
-Do not try to change Rust, database code, multi-window behavior, i18n, and release setup all at once.
+Do not try to change Rust, database code, windows, i18n, and release workflows all at once. Get the smallest working loop first.
 
 ## Who Is This For?
 
@@ -465,11 +466,11 @@ This template is a good fit for:
 
 - frontend developers learning Tauri
 - indie developers building desktop apps
-- teams that want a more structured base than a minimal starter
-- developers who want AI-assisted coding without letting project structure turn messy
+- developers who want to move from a simple starter to a more structured engineering base
+- developers who want AI-assisted coding but do not want the project structure to become messy
 
-If you only want a tiny Hello World app, this template may feel heavy.
-If you want a maintainable starting point for a real product, it is a better fit.
+If you only want a minimal Hello World, this template may feel heavy.
+If you want to build an app that will actually be maintained over time, it is a better fit.
 
 ## Related Docs
 
