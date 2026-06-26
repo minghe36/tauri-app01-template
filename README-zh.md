@@ -4,6 +4,7 @@
   <img src="./crates/icons/logo.png" alt="tauri-app01-template Logo" width="100">
   <h1>tauri-app01-template</h1>
   <p>[中文文档](https://github.com/minghe36/tauri-app01-template/blob/master/README-zh.md)</p>
+  <p><a href="https://github.com/minghe36/tauri-app01-template/blob/master/README.md">英文文档</a></p>
 </div>
 
 基于 Tauri v2、React 19、Rust 构建的现代桌面应用模板，目标不是做一个只能演示启动页面的 starter，而是提供一套可以直接进入业务开发的工程底座。

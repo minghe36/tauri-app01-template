@@ -3,7 +3,7 @@
 <div align="center">
   <img src="./crates/icons/logo.png" alt="tauri-app01-template Logo" width="100">
   <h1>tauri-app01-template</h1>
-  <p>[Chinese README](https://github.com/minghe36/tauri-app01-template/blob/master/README-zh.md)</p>
+  <p><a href="https://github.com/minghe36/tauri-app01-template/blob/master/README-zh.md">Chinese README</a></p>
 </div>
 
 A modern desktop application template built with **Tauri v2, React 19, and Rust**. The goal is not to provide a starter that only shows a launch screen, but to provide an engineering foundation you can move straight into real product development with.
