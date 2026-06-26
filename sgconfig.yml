@@ -1,0 +1,10 @@
+ruleDirs:
+  - ./.ast-grep/rules
+
+languageGlobs:
+  typescript:
+    - 'apps/desktop/src/**/*.ts'
+    - 'apps/desktop/src/**/*.tsx'
+
+testConfigs:
+  - testDir: ./.ast-grep/test

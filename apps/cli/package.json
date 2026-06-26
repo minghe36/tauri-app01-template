@@ -1,0 +1,15 @@
+{
+  "name": "@app/cli",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "app01-tpl": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "node --test",
+    "test:run": "node --test",
+    "lint": "node --check src/cli.js && node --check test/cli.test.js",
+    "typecheck": "node --check src/cli.js && node --check test/cli.test.js"
+  }
+}

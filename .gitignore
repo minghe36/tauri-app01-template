@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+apps/*/node_modules/
+
+# npm
+.npm-cache/
+npm-debug.log*
+
+# Build outputs
+dist/
+build/
+coverage/
+.vite/
+*.tsbuildinfo
+
+# Tauri / Rust
+target/
+apps/desktop/src-tauri/target/
+apps/mobile/src-tauri/gen/
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.idea/
+.vscode/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~

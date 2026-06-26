@@ -1,0 +1,7 @@
+node_modules
+dist
+.npm-cache
+apps/desktop/dist
+apps/desktop/src-tauri/target
+apps/desktop/src-tauri/gen
+apps/desktop/src/lib/bindings.ts

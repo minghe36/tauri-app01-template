@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "app01-tpl",
+  "version": "0.1.0",
+  "identifier": "com.app01.tpl",
+  "build": {
+    "beforeDevCommand": "npm --workspace @app/desktop run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm --workspace @app/desktop run build",
+    "frontendDist": "../../desktop/dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "app01-tpl",
+        "width": 430,
+        "height": 932,
+        "resizable": true,
+        "fullscreen": false,
+        "maximized": false,
+        "center": true,
+        "decorations": true,
+        "alwaysOnTop": false,
+        "transparent": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' tauri: ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "../../../crates/icons/128x128.png",
+      "../../../crates/icons/128x128@2x.png",
+      "../../../crates/icons/icon.icns",
+      "../../../crates/icons/icon.ico"
+    ],
+    "category": "DeveloperTool",
+    "shortDescription": "Mobile shell for app01-tpl",
+    "longDescription": "Mobile Tauri shell configuration for app01-tpl. It currently reuses the desktop frontend bundle while sharing the same app identity and icon assets."
+  }
+}

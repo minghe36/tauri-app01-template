@@ -1,0 +1,15 @@
+{
+  "name": "@app/mobile",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "tauri": "tauri",
+    "tauri:dev": "npm run tauri:dev:android",
+    "tauri:dev:android": "source ~/.cargo/env && npm run tauri android dev",
+    "tauri:dev:ios": "source ~/.cargo/env && npm run tauri ios dev",
+    "tauri:build": "npm run tauri:build:android",
+    "tauri:build:android": "source ~/.cargo/env && npm run tauri android build",
+    "tauri:build:ios": "source ~/.cargo/env && npm run tauri ios build"
+  }
+}
